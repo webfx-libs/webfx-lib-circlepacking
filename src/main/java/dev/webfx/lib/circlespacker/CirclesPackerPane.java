@@ -23,6 +23,8 @@ import java.util.stream.Collectors;
  */
 public final class CirclesPackerPane extends Pane {
 
+    private boolean animate;
+
     private final CirclesPacker circlesPacker = new ResponsiveCirclesPacker();
     private boolean skipTimeline = true;
     private Timeline timeline;
@@ -47,10 +49,20 @@ public final class CirclesPackerPane extends Pane {
     }
 
     public CirclesPackerPane() {
+        this(false);
+    }
+
+    public CirclesPackerPane(boolean animate) {
+        this.animate = animate;
     }
 
     public CirclesPackerPane(Node... children) {
+        this(false, children);
+    }
+
+    public CirclesPackerPane(boolean animate, Node... children) {
         super(children);
+        this.animate = animate;
     }
 
     @Override
@@ -70,7 +82,7 @@ public final class CirclesPackerPane extends Pane {
             double y = circlesPacker.getCircleCenterY(i) - radius;
             double diameter = 2 * radius;
             boolean recentlyAdded = recentlyAddedNodes.contains(node);
-            if (skipTimeline || recentlyAdded)
+            if (!animate || skipTimeline || recentlyAdded)
                 layoutInArea(node, x, y, diameter, diameter, 0, HPos.CENTER, VPos.CENTER);
             else {
                 node.resize(diameter, diameter);
@@ -103,7 +115,8 @@ public final class CirclesPackerPane extends Pane {
         keyValues.clear();
         recentlyAddedNodes.clear();
         recentlyRemovedNodes.clear();
-        skipTimeline = false;
+        if (animate)
+            skipTimeline = false;
     }
 
     private void zoomNodes(List<Node> nodes, boolean removed, boolean applyInitialScale) {
