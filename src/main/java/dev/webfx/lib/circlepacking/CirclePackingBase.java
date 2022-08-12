@@ -1,9 +1,9 @@
-package dev.webfx.lib.circlespacker;
+package dev.webfx.lib.circlepacking;
 
 /**
  * @author Bruno Salmon
  */
-abstract class CirclesPackerBase implements CirclesPacker {
+abstract class CirclePackingBase implements CirclePacking {
 
     protected double width, height, radius;
     protected boolean horizontal;

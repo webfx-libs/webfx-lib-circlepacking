@@ -1,6 +1,6 @@
 // File managed by WebFX (DO NOT EDIT MANUALLY)
 
-module webfx.lib.circlespacker {
+module webfx.lib.circlepacking {
 
     // Direct dependencies modules
     requires java.base;
@@ -8,6 +8,6 @@ module webfx.lib.circlespacker {
     requires javafx.graphics;
 
     // Exported packages
-    exports dev.webfx.lib.circlespacker;
+    exports dev.webfx.lib.circlepacking;
 
 }

@@ -35,7 +35,7 @@
 
     <export-snapshot>
 
-        <project name="webfx-lib-circlespacker">
+        <project name="webfx-lib-circlepacking">
 
             <required-libraries>
                 <webfx-library artifact="dev.webfx:webfx:0.1.0-SNAPSHOT"/>
@@ -50,7 +50,7 @@
             </dependencies>
 
             <source-packages>
-                <package>dev.webfx.lib.circlespacker</package>
+                <package>dev.webfx.lib.circlepacking</package>
             </source-packages>
 
             <used-by-source-modules>

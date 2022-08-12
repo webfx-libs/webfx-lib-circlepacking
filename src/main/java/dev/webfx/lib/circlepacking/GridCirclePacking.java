@@ -1,9 +1,9 @@
-package dev.webfx.lib.circlespacker;
+package dev.webfx.lib.circlepacking;
 
 /**
  * @author Bruno Salmon
  */
-final class GridCirclesPacker extends CirclesPackerBase {
+final class GridCirclePacking extends CirclePackingBase {
 
     private int hCount, vCount;
     private double hMargin, vMargin;

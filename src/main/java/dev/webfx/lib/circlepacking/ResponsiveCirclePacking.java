@@ -1,4 +1,4 @@
-package dev.webfx.lib.circlespacker;
+package dev.webfx.lib.circlepacking;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -6,32 +6,32 @@ import java.util.Comparator;
 /**
  * @author Bruno Salmon
  */
-final class ResponsiveCirclesPacker implements CirclesPacker {
+final class ResponsiveCirclePacking implements CirclePacking {
 
-    private final CirclesPacker[] circlesPackers = {
-            new GridCirclesPacker(),
-            new HoneyCombCirclesPacker()
+    private final CirclePacking[] circlePackings = {
+            new GridCirclePacking(),
+            new HoneyCombCirclePacking()
     };
-    private CirclesPacker maxRadiusCirclePacker;
+    private CirclePacking maxRadiusCirclePacker;
 
     @Override
     public void setContainerSize(double width, double height) {
-        Arrays.stream(circlesPackers).forEach(cp -> cp.setContainerSize(width, height));
+        Arrays.stream(circlePackings).forEach(cp -> cp.setContainerSize(width, height));
     }
 
     @Override
     public void setCirclesCount(int count) {
-        Arrays.stream(circlesPackers).forEach(cp -> cp.setCirclesCount(count));
+        Arrays.stream(circlePackings).forEach(cp -> cp.setCirclesCount(count));
     }
 
     @Override
     public boolean hasChanged() {
-        return Arrays.stream(circlesPackers).anyMatch(CirclesPacker::hasChanged);
+        return Arrays.stream(circlePackings).anyMatch(CirclePacking::hasChanged);
     }
 
     @Override
     public double getCirclesRadius() {
-        maxRadiusCirclePacker = Arrays.stream(circlesPackers).max(Comparator.comparingInt(cp -> (int) cp.getCirclesRadius())).orElse(null);
+        maxRadiusCirclePacker = Arrays.stream(circlePackings).max(Comparator.comparingInt(cp -> (int) cp.getCirclesRadius())).orElse(null);
         return maxRadiusCirclePacker == null ? 0 : maxRadiusCirclePacker.getCirclesRadius();
     }
 

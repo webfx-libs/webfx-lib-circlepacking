@@ -1,4 +1,4 @@
-package dev.webfx.lib.circlespacker;
+package dev.webfx.lib.circlepacking;
 
 import javafx.animation.Interpolator;
 import javafx.animation.KeyFrame;
@@ -21,11 +21,11 @@ import java.util.stream.Collectors;
 /**
  * @author Bruno Salmon
  */
-public final class CirclesPackerPane extends Pane {
+public final class CirclePackingPane extends Pane {
 
     private boolean animate;
 
-    private final CirclesPacker circlesPacker = new ResponsiveCirclesPacker();
+    private final CirclePacking circlePacking = new ResponsiveCirclePacking();
     private boolean skipTimeline = true;
     private Timeline timeline;
     private final List<KeyValue> keyValues = new ArrayList<>();
@@ -48,19 +48,19 @@ public final class CirclesPackerPane extends Pane {
         );
     }
 
-    public CirclesPackerPane() {
+    public CirclePackingPane() {
         this(false);
     }
 
-    public CirclesPackerPane(boolean animate) {
+    public CirclePackingPane(boolean animate) {
         this.animate = animate;
     }
 
-    public CirclesPackerPane(Node... children) {
+    public CirclePackingPane(Node... children) {
         this(false, children);
     }
 
-    public CirclesPackerPane(boolean animate, Node... children) {
+    public CirclePackingPane(boolean animate, Node... children) {
         super(children);
         this.animate = animate;
     }
@@ -69,17 +69,17 @@ public final class CirclesPackerPane extends Pane {
     protected void layoutChildren() {
         List<Node> children = getManagedChildren();
         int n = children.size();
-        circlesPacker.setCirclesCount(n);
-        circlesPacker.setContainerSize(getWidth(), getHeight());
-        if (recentlyAddedNodes.isEmpty() && recentlyRemovedNodes.isEmpty() && !circlesPacker.hasChanged())
+        circlePacking.setCirclesCount(n);
+        circlePacking.setContainerSize(getWidth(), getHeight());
+        if (recentlyAddedNodes.isEmpty() && recentlyRemovedNodes.isEmpty() && !circlePacking.hasChanged())
             return;
-        double radius = circlesPacker.getCirclesRadius();
+        double radius = circlePacking.getCirclesRadius();
         for (int i = 0; i < n; i++) {
             Node node = children.get(i);
             if (node instanceof Circle)
                 ((Circle) node).setRadius(radius);
-            double x = circlesPacker.getCircleCenterX(i) - radius;
-            double y = circlesPacker.getCircleCenterY(i) - radius;
+            double x = circlePacking.getCircleCenterX(i) - radius;
+            double y = circlePacking.getCircleCenterY(i) - radius;
             double diameter = 2 * radius;
             boolean recentlyAdded = recentlyAddedNodes.contains(node);
             if (!animate || skipTimeline || recentlyAdded)

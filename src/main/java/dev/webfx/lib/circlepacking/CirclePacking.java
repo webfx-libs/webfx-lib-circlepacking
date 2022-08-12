@@ -1,9 +1,9 @@
-package dev.webfx.lib.circlespacker;
+package dev.webfx.lib.circlepacking;
 
 /**
  * @author Bruno Salmon
  */
-interface CirclesPacker {
+interface CirclePacking {
 
     void setContainerSize(double width, double height);
 

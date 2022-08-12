@@ -1,9 +1,9 @@
-package dev.webfx.lib.circlespacker;
+package dev.webfx.lib.circlepacking;
 
 /**
  * @author Bruno Salmon
  */
-final class HoneyCombCirclesPacker extends CirclesPackerBase {
+final class HoneyCombCirclePacking extends CirclePackingBase {
 
     private double patternHeight;
     private double bigRadius; // Before truncation
