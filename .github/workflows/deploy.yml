@@ -1,4 +1,4 @@
-name: Deploy to Sonatype repository
+name: Build and Deploy to Sonatype
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
         with:
           distribution: 'zulu'
           java-version: ${{ env.jdk-version }}
-          server-id: sonatype-deploy
+          server-id: webfx-sonatype-deploy
           server-username: SONATYPE_USERNAME
           server-password: SONATYPE_PASSWORD
 
