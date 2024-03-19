@@ -19,4 +19,11 @@
         <used-by-source-modules/>
     </dependencies>
 
+    <maven-pom-manual>
+        <properties>
+            <!-- Necessary for single-module libraries, otherwise the webfx export is done too late in deploy phase -->
+            <plugin.webfx.param.export-phase>install</plugin.webfx.param.export-phase>
+        </properties>
+    </maven-pom-manual>
+
 </project>

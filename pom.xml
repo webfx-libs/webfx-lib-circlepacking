@@ -30,6 +30,12 @@
 
     </repositories>
 
+
+    <properties>
+        <!-- Necessary for single-module libraries, otherwise the webfx export is done too late in deploy phase -->
+        <plugin.webfx.param.export-phase>install</plugin.webfx.param.export-phase>
+    </properties>
+
     <dependencies>
 
         <dependency>
